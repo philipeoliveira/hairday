@@ -8,6 +8,7 @@ export const textVariants = cva('', {
          'body-title-sm': 'text-sm leading-5 font-bold',
          'body-text-md': 'text-base leading-6 font-normal',
          'body-text-sm': 'text-sm leading-5 font-normal',
+         'body-button-sm': 'text-sm leading-5 font-bold uppercase text-gray-900',
       },
    },
    defaultVariants: {
