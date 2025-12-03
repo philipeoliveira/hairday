@@ -21,6 +21,9 @@ export function Sidebar() {
       const id = crypto.randomUUID();
 
       console.log(id, time, client);
+
+      setTime('');
+      setClient('');
    }
 
    return (
@@ -99,12 +102,15 @@ export function Sidebar() {
                   </Text>
                   <InputText
                      name='client'
+                     value={client}
                      onChange={(e) => setClient(e.target.value)}
                      icon={UserSquare}
                      placeholder='Helena Souza'
                   />
                </label>
-               <Button type='submit'>Agendar</Button>
+               <Button type='submit' isDisabled={!client || !time}>
+                  Agendar
+               </Button>
             </form>
          </div>
       </aside>
