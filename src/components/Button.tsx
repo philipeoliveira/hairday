@@ -2,7 +2,9 @@ import { type VariantProps } from 'class-variance-authority';
 import { buttonVariants } from '../styles/variants/button-variants';
 import { Text } from './Text';
 
-interface ButtonProps extends VariantProps<typeof buttonVariants> {
+interface ButtonProps
+   extends Omit<VariantProps<typeof buttonVariants>, 'disabled'>,
+      React.ComponentProps<'button'> {
    className?: string;
    children: React.ReactNode;
 }
