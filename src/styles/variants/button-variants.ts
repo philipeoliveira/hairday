@@ -10,14 +10,14 @@ export const buttonVariants = cva(
          size: {
             md: 'py-4.5 px-6',
          },
-         disabled: {
+         isDisabled: {
             true: 'opacity-50 pointer-events-none',
          },
       },
       defaultVariants: {
          variant: 'primary',
          size: 'md',
-         disabled: false,
+         isDisabled: false,
       },
    }
 );
