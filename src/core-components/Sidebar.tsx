@@ -4,26 +4,21 @@ import { Text } from '../components/Text';
 import { AvailableTimes } from './AvailableTimes';
 import UserSquare from '../assets/icons/userSquare.svg?react';
 import { useState } from 'react';
-
-const times = {
-   morning: ['09:00', '10:00', '11:00', '12:00'],
-   afternoon: ['13:00', '14:00', '15:00', '16:00', '17:00', '18:00'],
-   night: ['19:00', '20:00', '21:00'],
-} as const;
+import { useAppointment } from '../hooks/useAppointment';
+import { times } from '../constants/times';
 
 export function Sidebar() {
-   const [time, setTime] = useState('');
    const [client, setClient] = useState('');
+   const [time, setTime] = useState('');
+   const { createAppointment } = useAppointment();
 
    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
       e.preventDefault();
 
-      const id = crypto.randomUUID();
+      createAppointment({ client, time });
 
-      console.log(id, time, client);
-
-      setTime('');
       setClient('');
+      setTime('');
    }
 
    return (
