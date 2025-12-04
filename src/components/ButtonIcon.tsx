@@ -1,5 +1,8 @@
 import { Icon } from './Icon';
-import { buttonIconVariants } from '../styles/variants/button-icon-variants';
+import {
+   buttonIconVariants,
+   buttonIconIconVariants,
+} from '../styles/variants/button-icon-variants';
 
 interface ButtonIconProps extends React.ComponentProps<'button'> {
    icon: React.ComponentProps<typeof Icon>['svg'];
@@ -8,8 +11,8 @@ interface ButtonIconProps extends React.ComponentProps<'button'> {
 
 export function ButtonIcon({ icon, className, ...props }: ButtonIconProps) {
    return (
-      <button {...props}>
-         <Icon svg={icon} className={buttonIconVariants({ className })} />
+      <button {...props} className={buttonIconVariants()}>
+         <Icon svg={icon} className={buttonIconIconVariants({ className })} />
       </button>
    );
 }
