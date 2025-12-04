@@ -26,8 +26,8 @@ const periods = {
 
 interface CardProps extends VariantProps<typeof cardVariants> {
    className?: string;
-   children?: React.ReactNode;
    period: keyof typeof periods;
+   children: React.ReactNode;
 }
 
 export function AppointmentCard({
@@ -52,17 +52,7 @@ export function AppointmentCard({
                {times}
             </Text>
          </div>
-         <div className='flex flex-col p-5 gap-0.5'>
-            {children ? (
-               <Text variant='body-text-sm' className='text-gray-300'>
-                  {children}
-               </Text>
-            ) : (
-               <Text variant='body-text-sm' className='text-gray-300'>
-                  Nenhum agendamento para este período
-               </Text>
-            )}
-         </div>
+         <div className='flex flex-col p-5 gap-0.5'>{children}</div>
       </section>
    );
 }
