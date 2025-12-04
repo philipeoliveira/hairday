@@ -10,7 +10,8 @@ import { times } from '../constants/times';
 export function Sidebar() {
    const [client, setClient] = useState('');
    const [time, setTime] = useState('');
-   const { createAppointment } = useAppointment();
+   const { appointments, createAppointment } = useAppointment();
+   const bookedTimes = appointments.map((appointment) => appointment.time);
 
    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
       e.preventDefault();
@@ -48,6 +49,7 @@ export function Sidebar() {
                               value={timeMorning}
                               onChange={(e) => setTime(e.target.value)}
                               isSelected={time === timeMorning}
+                              isDisabled={bookedTimes.includes(timeMorning)}
                            >
                               {timeMorning}
                            </AvailableTimes>
@@ -66,6 +68,7 @@ export function Sidebar() {
                               value={timeAfternoon}
                               onChange={(e) => setTime(e.target.value)}
                               isSelected={time === timeAfternoon}
+                              isDisabled={bookedTimes.includes(timeAfternoon)}
                            >
                               {timeAfternoon}
                            </AvailableTimes>
@@ -83,6 +86,7 @@ export function Sidebar() {
                               name='time'
                               value={timeNight}
                               isSelected={time === timeNight}
+                              isDisabled={bookedTimes.includes(timeNight)}
                               onChange={(e) => setTime(e.target.value)}
                            >
                               {timeNight}
