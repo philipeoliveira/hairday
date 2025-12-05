@@ -32,86 +32,91 @@ export function Sidebar() {
                Selecione data, horário e informe o nome do cliente para criar o
                agendamento
             </Text>
-            <form className='space-y-8' onSubmit={handleSubmit}>
+         </div>
+         <form className='space-y-8' onSubmit={handleSubmit}>
+            <label className='flex flex-col gap-2'>
+               <Text variant='body-title-md' className='text-gray-200'>
+                  Data
+               </Text>
+            </label>
+            <div className='flex flex-col gap-2'>
+               <Text variant='body-title-md' className='text-gray-200'>
+                  Horários
+               </Text>
                <div className='flex flex-col gap-2'>
-                  <Text variant='body-title-md' className='text-gray-200'>
-                     Horários
+                  <Text variant='body-text-md' className='text-gray-200'>
+                     Manhã
                   </Text>
-                  <div className='flex flex-col gap-2'>
-                     <Text variant='body-text-md' className='text-gray-200'>
-                        Manhã
-                     </Text>
-                     <div className='flex flex-wrap items-center gap-2'>
-                        {times.morning.map((timeMorning) => (
-                           <AvailableTimes
-                              key={timeMorning}
-                              name='time'
-                              value={timeMorning}
-                              onChange={(e) => setTime(e.target.value)}
-                              isSelected={time === timeMorning}
-                              isDisabled={bookedTimes.includes(timeMorning)}
-                           >
-                              {timeMorning}
-                           </AvailableTimes>
-                        ))}
-                     </div>
-                  </div>
-                  <div className='flex flex-col gap-2'>
-                     <Text variant='body-text-md' className='text-gray-200'>
-                        Tarde
-                     </Text>
-                     <div className='flex flex-wrap items-center gap-2'>
-                        {times.afternoon.map((timeAfternoon) => (
-                           <AvailableTimes
-                              key={timeAfternoon}
-                              name='time'
-                              value={timeAfternoon}
-                              onChange={(e) => setTime(e.target.value)}
-                              isSelected={time === timeAfternoon}
-                              isDisabled={bookedTimes.includes(timeAfternoon)}
-                           >
-                              {timeAfternoon}
-                           </AvailableTimes>
-                        ))}
-                     </div>
-                  </div>
-                  <div className='flex flex-col gap-2'>
-                     <Text variant='body-text-md' className='text-gray-200'>
-                        Noite
-                     </Text>
-                     <div className='flex flex-wrap items-center gap-2'>
-                        {times.night.map((timeNight) => (
-                           <AvailableTimes
-                              key={timeNight}
-                              name='time'
-                              value={timeNight}
-                              isSelected={time === timeNight}
-                              isDisabled={bookedTimes.includes(timeNight)}
-                              onChange={(e) => setTime(e.target.value)}
-                           >
-                              {timeNight}
-                           </AvailableTimes>
-                        ))}
-                     </div>
+                  <div className='flex flex-wrap items-center gap-2'>
+                     {times.morning.map((timeMorning) => (
+                        <AvailableTimes
+                           key={timeMorning}
+                           name='time'
+                           value={timeMorning}
+                           onChange={(e) => setTime(e.target.value)}
+                           isSelected={time === timeMorning}
+                           isDisabled={bookedTimes.includes(timeMorning)}
+                        >
+                           {timeMorning}
+                        </AvailableTimes>
+                     ))}
                   </div>
                </div>
-               <label className='flex flex-col gap-2 w-full'>
-                  <Text variant='body-title-md' className='text-gray-200'>
-                     Cliente
+               <div className='flex flex-col gap-2'>
+                  <Text variant='body-text-md' className='text-gray-200'>
+                     Tarde
                   </Text>
-                  <InputText
-                     name='client'
-                     value={client}
-                     onChange={(e) => setClient(e.target.value)}
-                     icon={UserSquare}
-                     placeholder='Helena Souza'
-                  />
-               </label>
-               <Button type='submit' isDisabled={!client || !time}>
-                  Agendar
-               </Button>
-            </form>
-         </div>
+                  <div className='flex flex-wrap items-center gap-2'>
+                     {times.afternoon.map((timeAfternoon) => (
+                        <AvailableTimes
+                           key={timeAfternoon}
+                           name='time'
+                           value={timeAfternoon}
+                           onChange={(e) => setTime(e.target.value)}
+                           isSelected={time === timeAfternoon}
+                           isDisabled={bookedTimes.includes(timeAfternoon)}
+                        >
+                           {timeAfternoon}
+                        </AvailableTimes>
+                     ))}
+                  </div>
+               </div>
+               <div className='flex flex-col gap-2'>
+                  <Text variant='body-text-md' className='text-gray-200'>
+                     Noite
+                  </Text>
+                  <div className='flex flex-wrap items-center gap-2'>
+                     {times.night.map((timeNight) => (
+                        <AvailableTimes
+                           key={timeNight}
+                           name='time'
+                           value={timeNight}
+                           isSelected={time === timeNight}
+                           isDisabled={bookedTimes.includes(timeNight)}
+                           onChange={(e) => setTime(e.target.value)}
+                        >
+                           {timeNight}
+                        </AvailableTimes>
+                     ))}
+                  </div>
+               </div>
+            </div>
+            <label className='flex flex-col gap-2 w-full'>
+               <Text variant='body-title-md' className='text-gray-200'>
+                  Cliente
+               </Text>
+               <InputText
+                  name='client'
+                  value={client}
+                  onChange={(e) => setClient(e.target.value)}
+                  icon={UserSquare}
+                  placeholder='Helena Souza'
+               />
+            </label>
+            <Button type='submit' isDisabled={!client || !time}>
+               Agendar
+            </Button>
+         </form>
       </aside>
    );
 }
