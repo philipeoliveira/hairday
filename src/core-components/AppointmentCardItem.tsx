@@ -17,7 +17,7 @@ export function AppointmentCardItem({ id, client, time }: AppointmentCardItemPro
    }
 
    return (
-      <div className='flex justify-between gap-2'>
+      <li className='flex justify-between gap-2 py-1'>
          <div className='flex gap-5'>
             <Text variant='body-title-md' className='text-gray-300'>
                {time}
@@ -26,9 +26,7 @@ export function AppointmentCardItem({ id, client, time }: AppointmentCardItemPro
                {client}
             </Text>
          </div>
-         <div>
-            <ButtonIcon icon={Trash} onClick={() => handleDelete(id)} />
-         </div>
-      </div>
+         <ButtonIcon icon={Trash} onClick={() => handleDelete(id)} />
+      </li>
    );
 }

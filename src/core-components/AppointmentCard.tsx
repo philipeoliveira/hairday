@@ -52,7 +52,7 @@ export function AppointmentCard({
                {times}
             </Text>
          </div>
-         <div className='flex flex-col p-5 gap-0.5'>{children}</div>
+         <ul className='flex flex-col p-5 gap-0.5'>{children}</ul>
       </section>
    );
 }
