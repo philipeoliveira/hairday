@@ -26,7 +26,11 @@ export function AppointmentCardItem({ id, client, time }: AppointmentCardItemPro
                {client}
             </Text>
          </div>
-         <ButtonIcon icon={Trash} onClick={() => handleDelete(id)} />
+         <ButtonIcon
+            icon={Trash}
+            onClick={() => handleDelete(id)}
+            title={`Deletar horário ${time}`}
+         />
       </li>
    );
 }
