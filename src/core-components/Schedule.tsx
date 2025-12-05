@@ -1,20 +1,11 @@
 import { Text } from '../components/Text';
 import { AppointmentCard } from '../core-components/AppointmentCard';
-import { useAppointment } from '../hooks/useAppointment';
-import { times } from '../constants/times';
 import { AppointmentCardItem } from './AppointmentCardItem';
+import { useAppointment } from '../hooks/useAppointment';
 
 export function Schedule() {
-   const { appointments } = useAppointment();
-   const morningAppointments = appointments.filter((appointment) =>
-      (times.morning as readonly string[]).includes(appointment.time)
-   );
-   const afternoonAppointments = appointments.filter((appointment) =>
-      (times.afternoon as readonly string[]).includes(appointment.time)
-   );
-   const nightAppointments = appointments.filter((appointment) =>
-      (times.night as readonly string[]).includes(appointment.time)
-   );
+   const { morningAppointments, afternoonAppointments, nightAppointments } =
+      useAppointment();
 
    return (
       <div className='w-full py-20'>
