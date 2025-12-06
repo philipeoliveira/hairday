@@ -6,9 +6,11 @@ import UserSquare from '../assets/icons/userSquare.svg?react';
 import { useState } from 'react';
 import { useAppointment } from '../hooks/useAppointment';
 import { times } from '../constants/times';
+import DatePicker from './DatePicker';
 
 export function Sidebar() {
    const [client, setClient] = useState('');
+   const [date, setDate] = useState('');
    const [time, setTime] = useState('');
    const { appointments, createAppointment } = useAppointment();
    const bookedTimes = appointments.map((appointment) => appointment.time);
@@ -16,9 +18,10 @@ export function Sidebar() {
    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
       e.preventDefault();
 
-      createAppointment({ client, time });
+      createAppointment({ client, date, time });
 
       setClient('');
+      setDate('');
       setTime('');
    }
 
@@ -38,13 +41,14 @@ export function Sidebar() {
                <Text variant='body-title-md' className='text-gray-200'>
                   Data
                </Text>
+               <DatePicker value={date} onChange={setDate} className='w-full' />
             </label>
             <div className='flex flex-col gap-2'>
                <Text variant='body-title-md' className='text-gray-200'>
                   Horários
                </Text>
                <div className='flex flex-col gap-2'>
-                  <Text variant='body-text-md' className='text-gray-200'>
+                  <Text variant='body-text-md' className='text-gray-300'>
                      Manhã
                   </Text>
                   <div className='flex flex-wrap items-center gap-2'>
@@ -63,7 +67,7 @@ export function Sidebar() {
                   </div>
                </div>
                <div className='flex flex-col gap-2'>
-                  <Text variant='body-text-md' className='text-gray-200'>
+                  <Text variant='body-text-md' className='text-gray-300'>
                      Tarde
                   </Text>
                   <div className='flex flex-wrap items-center gap-2'>
@@ -82,7 +86,7 @@ export function Sidebar() {
                   </div>
                </div>
                <div className='flex flex-col gap-2'>
-                  <Text variant='body-text-md' className='text-gray-200'>
+                  <Text variant='body-text-md' className='text-gray-300'>
                      Noite
                   </Text>
                   <div className='flex flex-wrap items-center gap-2'>
@@ -113,7 +117,7 @@ export function Sidebar() {
                   placeholder='Helena Souza'
                />
             </label>
-            <Button type='submit' isDisabled={!client || !time}>
+            <Button type='submit' isDisabled={!client || !date || !time}>
                Agendar
             </Button>
          </form>
