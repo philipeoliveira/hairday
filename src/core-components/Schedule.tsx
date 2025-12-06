@@ -32,7 +32,7 @@ export function Schedule() {
                         />
                      ))
                   ) : (
-                     <Text variant='body-text-sm' className='text-gray-300'>
+                     <Text variant='body-text-md' className='text-gray-300'>
                         Nenhum agendamento para o período da manhã
                      </Text>
                   )}
@@ -49,7 +49,7 @@ export function Schedule() {
                         />
                      ))
                   ) : (
-                     <Text variant='body-text-sm' className='text-gray-300'>
+                     <Text variant='body-text-md' className='text-gray-300'>
                         Nenhum agendamento para o período da tarde
                      </Text>
                   )}
@@ -66,7 +66,7 @@ export function Schedule() {
                         />
                      ))
                   ) : (
-                     <Text variant='body-text-sm' className='text-gray-300'>
+                     <Text variant='body-text-md' className='text-gray-300'>
                         Nenhum agendamento para o período da noite
                      </Text>
                   )}
