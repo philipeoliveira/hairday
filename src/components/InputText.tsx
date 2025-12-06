@@ -9,7 +9,7 @@ interface InputTextProps extends React.ComponentProps<'input'> {
 export function InputText({ icon, className, ...props }: InputTextProps) {
    return (
       <div className={inputWrapperVariants({ className })}>
-         {icon && <Icon svg={icon} />}
+         {icon && <Icon svg={icon} className='fill-yellow' />}
          <input
             type='text'
             className={inputVariants()}
