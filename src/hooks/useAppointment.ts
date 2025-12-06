@@ -18,8 +18,8 @@ export function useAppointment() {
       (times.night as readonly string[]).includes(appointment.time)
    );
 
-   function createAppointment({ client, time }: Omit<AppointmentProps, 'id'>) {
-      setAppointments([...appointments, { id: crypto.randomUUID(), client, time }]);
+   function createAppointment({ client, date, time }: Omit<AppointmentProps, 'id'>) {
+      setAppointments([...appointments, { id: crypto.randomUUID(), client, date, time }]);
    }
 
    function deleteAppointment(id: string) {
