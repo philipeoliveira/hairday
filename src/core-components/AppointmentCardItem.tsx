@@ -19,10 +19,10 @@ export function AppointmentCardItem({ id, client, time }: AppointmentCardItemPro
    return (
       <li className='flex justify-between gap-2 py-1'>
          <div className='flex gap-5'>
-            <Text variant='body-title-md' className='text-gray-300'>
+            <Text variant='body-title-md' className='text-gray-200'>
                {time}
             </Text>
-            <Text variant='body-text-md' className='text-gray-300'>
+            <Text variant='body-text-md' className='text-gray-200'>
                {client}
             </Text>
          </div>
