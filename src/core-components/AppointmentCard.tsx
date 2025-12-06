@@ -43,12 +43,12 @@ export function AppointmentCard({
       <section className={cardVariants({ size, className })} {...props}>
          <div className='px-5 py-3 flex items-center justify-between gap-6 border-b border-gray-600'>
             <div className='flex items-center gap-2'>
-               <Icon svg={icon} />
+               <Icon svg={icon} className='fill-yellow' />
                <Text as='h3' variant='body-text-sm' className='text-gray-300'>
                   {title}
                </Text>
             </div>
-            <Text variant='body-text-sm' className='text-gray-300'>
+            <Text variant='body-text-sm' className='text-gray-400'>
                {times}
             </Text>
          </div>
