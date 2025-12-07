@@ -30,7 +30,7 @@ export default function DatePicker({ value, onChange, className }: DatePickerPro
          <div
             data-state={open ? 'open' : 'closed'}
             className={cn(
-               'flex items-center gap-2 border text-gray-200 border-gray-500 focus-within:border-yellow-dark data-[state=open]:border-yellow-dark bg-transparent p-3 rounded-xl transition-colors',
+               'flex items-center gap-2 border text-gray-200 border-gray-500 focus-within:border-yellow-dark data-[state=open]:border-yellow-dark bg-transparent h-12 px-3 rounded-xl transition-colors',
                className
             )}
          >
