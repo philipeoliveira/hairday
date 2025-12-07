@@ -7,13 +7,17 @@ import { useState } from 'react';
 import { useAppointment } from '../hooks/useAppointment';
 import { times } from '../constants/times';
 import DatePicker from './DatePicker';
+import dayjs from '@/lib/dayjs';
 
 export function Sidebar() {
    const [client, setClient] = useState('');
    const [date, setDate] = useState('');
    const [time, setTime] = useState('');
    const { appointments, createAppointment } = useAppointment();
-   const bookedTimes = appointments.map((appointment) => appointment.time);
+
+   const bookedTimes = appointments
+      .filter((a) => dayjs(a.date, 'DD/MM/YYYY').isSame(dayjs(date, 'DD/MM/YYYY'), 'day'))
+      .map((a) => a.time);
 
    function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
       e.preventDefault();
@@ -57,9 +61,9 @@ export function Sidebar() {
                            key={timeMorning}
                            name='time'
                            value={timeMorning}
-                           onChange={(e) => setTime(e.target.value)}
                            isSelected={time === timeMorning}
-                           isDisabled={bookedTimes.includes(timeMorning)}
+                           isDisabled={bookedTimes.includes(timeMorning) || !date}
+                           onChange={(e) => setTime(e.target.value)}
                         >
                            {timeMorning}
                         </AvailableTimes>
@@ -76,9 +80,9 @@ export function Sidebar() {
                            key={timeAfternoon}
                            name='time'
                            value={timeAfternoon}
-                           onChange={(e) => setTime(e.target.value)}
                            isSelected={time === timeAfternoon}
-                           isDisabled={bookedTimes.includes(timeAfternoon)}
+                           isDisabled={bookedTimes.includes(timeAfternoon) || !date}
+                           onChange={(e) => setTime(e.target.value)}
                         >
                            {timeAfternoon}
                         </AvailableTimes>
@@ -96,7 +100,7 @@ export function Sidebar() {
                            name='time'
                            value={timeNight}
                            isSelected={time === timeNight}
-                           isDisabled={bookedTimes.includes(timeNight)}
+                           isDisabled={bookedTimes.includes(timeNight) || !date}
                            onChange={(e) => setTime(e.target.value)}
                         >
                            {timeNight}

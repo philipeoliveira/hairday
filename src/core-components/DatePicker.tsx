@@ -3,7 +3,7 @@ import { IMaskInput } from 'react-imask';
 import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
 import { Calendar } from '@/components/ui/calendar';
 import { cn } from '@/lib/utils';
-import dayjs from 'dayjs';
+import dayjs from '@/lib/dayjs';
 import 'dayjs/locale/pt-br';
 import { ptBR } from 'date-fns/locale';
 import CalendarBlank from '../assets/icons/calendarBlank.svg?react';
@@ -20,6 +20,7 @@ dayjs.locale('pt-br');
 
 export default function DatePicker({ value, onChange, className }: DatePickerProps) {
    const [open, setOpen] = useState(false);
+
    // “zerar” a data atual para meia-noite
    const today = new Date();
    today.setHours(0, 0, 0, 0);
