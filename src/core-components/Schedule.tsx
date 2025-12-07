@@ -2,10 +2,15 @@ import { Text } from '../components/Text';
 import { AppointmentCard } from '../core-components/AppointmentCard';
 import { AppointmentCardItem } from './AppointmentCardItem';
 import { useAppointment } from '../hooks/useAppointment';
+import { useState } from 'react';
+import dayjs from '@/lib/dayjs';
+import DatePicker from './DatePicker';
 
 export function Schedule() {
+   const [date, setDate] = useState(dayjs().format('DD/MM/YYYY'));
+
    const { morningAppointments, afternoonAppointments, nightAppointments } =
-      useAppointment();
+      useAppointment(date);
 
    return (
       <div className='w-full py-20'>
@@ -19,6 +24,7 @@ export function Schedule() {
                      Consulte os seus cortes de cabelo agendados por dia
                   </Text>
                </div>
+               <DatePicker value={date} onChange={setDate} />
             </div>
             <div className='space-y-3'>
                <AppointmentCard period='morning'>

@@ -1,20 +1,30 @@
 import useLocalStorage from 'use-local-storage';
 import { type AppointmentProps } from '../types/appointment';
 import { times } from '../constants/times';
+import dayjs from '@/lib/dayjs';
 
-export function useAppointment() {
+export function useAppointment(selectedDate?: string) {
    const [appointments, setAppointments] = useLocalStorage<AppointmentProps[]>(
       'appointments',
       []
    );
 
-   const morningAppointments = appointments.filter((appointment) =>
+   // Filtra os agendamentos pela data escolhida
+   const filteredByDate = appointments.filter((appointment) =>
+      dayjs(appointment.date, 'DD/MM/YYYY').isSame(
+         dayjs(selectedDate, 'DD/MM/YYYY'),
+         'day'
+      )
+   );
+
+   // Filtra os agendamentos por período
+   const morningAppointments = filteredByDate.filter((appointment) =>
       (times.morning as readonly string[]).includes(appointment.time)
    );
-   const afternoonAppointments = appointments.filter((appointment) =>
+   const afternoonAppointments = filteredByDate.filter((appointment) =>
       (times.afternoon as readonly string[]).includes(appointment.time)
    );
-   const nightAppointments = appointments.filter((appointment) =>
+   const nightAppointments = filteredByDate.filter((appointment) =>
       (times.night as readonly string[]).includes(appointment.time)
    );
 
