@@ -29,16 +29,20 @@ export function Schedule() {
             <div className='space-y-3'>
                <AppointmentCard period='morning'>
                   {morningAppointments.length > 0 ? (
-                     morningAppointments.map((morningAppointment) => (
-                        <AppointmentCardItem
-                           key={morningAppointment.id}
-                           id={morningAppointment.id}
-                           client={morningAppointment.client}
-                           time={morningAppointment.time}
-                        />
-                     ))
+                     [...morningAppointments] // Cria uma cópia do array para evitar mutação
+                        .sort((a, b) =>
+                           dayjs(a.time, 'HH:mm').diff(dayjs(b.time, 'HH:mm'))
+                        )
+                        .map((morningAppointment) => (
+                           <AppointmentCardItem
+                              key={morningAppointment.id}
+                              id={morningAppointment.id}
+                              client={morningAppointment.client}
+                              time={morningAppointment.time}
+                           />
+                        ))
                   ) : (
-                     <Text variant='body-text-md' className='text-gray-300'>
+                     <Text variant='body-text-md' className='text-gray-300 py-1'>
                         Nenhum agendamento para o período da manhã
                      </Text>
                   )}
@@ -46,16 +50,20 @@ export function Schedule() {
 
                <AppointmentCard period='afternoon'>
                   {afternoonAppointments.length > 0 ? (
-                     afternoonAppointments.map((afternoonAppointment) => (
-                        <AppointmentCardItem
-                           key={afternoonAppointment.id}
-                           id={afternoonAppointment.id}
-                           client={afternoonAppointment.client}
-                           time={afternoonAppointment.time}
-                        />
-                     ))
+                     [...afternoonAppointments] // Cria uma cópia do array para evitar mutação
+                        .sort((a, b) =>
+                           dayjs(a.time, 'HH:mm').diff(dayjs(b.time, 'HH:mm'))
+                        )
+                        .map((afternoonAppointment) => (
+                           <AppointmentCardItem
+                              key={afternoonAppointment.id}
+                              id={afternoonAppointment.id}
+                              client={afternoonAppointment.client}
+                              time={afternoonAppointment.time}
+                           />
+                        ))
                   ) : (
-                     <Text variant='body-text-md' className='text-gray-300'>
+                     <Text variant='body-text-md' className='text-gray-300 py-1'>
                         Nenhum agendamento para o período da tarde
                      </Text>
                   )}
@@ -63,16 +71,20 @@ export function Schedule() {
 
                <AppointmentCard period='night'>
                   {nightAppointments.length > 0 ? (
-                     nightAppointments.map((nightAppointment) => (
-                        <AppointmentCardItem
-                           key={nightAppointment.id}
-                           id={nightAppointment.id}
-                           client={nightAppointment.client}
-                           time={nightAppointment.time}
-                        />
-                     ))
+                     [...nightAppointments] // Cria uma cópia do array para evitar mutação
+                        .sort((a, b) =>
+                           dayjs(a.time, 'HH:mm').diff(dayjs(b.time, 'HH:mm'))
+                        )
+                        .map((nightAppointment) => (
+                           <AppointmentCardItem
+                              key={nightAppointment.id}
+                              id={nightAppointment.id}
+                              client={nightAppointment.client}
+                              time={nightAppointment.time}
+                           />
+                        ))
                   ) : (
-                     <Text variant='body-text-md' className='text-gray-300'>
+                     <Text variant='body-text-md' className='text-gray-300 py-1'>
                         Nenhum agendamento para o período da noite
                      </Text>
                   )}
