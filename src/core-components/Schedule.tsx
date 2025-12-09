@@ -13,9 +13,9 @@ export function Schedule() {
       useAppointment(date);
 
    return (
-      <div className='w-full py-20'>
+      <div className='w-full md:px-8 md:py-20 px-2 py-4'>
          <div className='mx-auto flex flex-col gap-8 max-w-170.5'>
-            <div className='flex justify-between gap-6'>
+            <div className='flex flex-col lg:flex-row md:justify-between gap-6'>
                <div className='flex flex-col gap-1'>
                   <Text as='h2' variant='body-title-lg' className='text-gray-100'>
                      Sua agenda

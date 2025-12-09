@@ -30,7 +30,7 @@ export function Sidebar() {
    }
 
    return (
-      <aside className='p-20 bg-gray-700 rounded-xl max-w-124.5 w-full flex flex-col gap-6'>
+      <aside className='px-10 py-20 lg:p-20 bg-gray-700 rounded-xl lg:max-w-124.5 w-full flex flex-col gap-6'>
          <div className='space-y-1 w-full'>
             <Text as='h1' variant='body-title-lg' className='text-gray-100'>
                Agende um atendimento
