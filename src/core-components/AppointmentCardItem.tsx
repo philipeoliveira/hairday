@@ -1,7 +1,6 @@
-import { ButtonIcon } from '../components/ButtonIcon';
 import { Text } from '../components/Text';
 import { useAppointment } from '../hooks/useAppointment';
-import Trash from '../assets/icons/trash.svg?react';
+import { DeleteConfirmationButton } from './DeleteConfirmationButton';
 
 interface AppointmentCardItemProps {
    id: string;
@@ -26,10 +25,11 @@ export function AppointmentCardItem({ id, client, time }: AppointmentCardItemPro
                {client}
             </Text>
          </div>
-         <ButtonIcon
-            icon={Trash}
-            onClick={() => handleDelete(id)}
-            title={`Deletar horário ${time}`}
+         <DeleteConfirmationButton
+            id={id}
+            time={time}
+            client={client}
+            onDelete={handleDelete}
          />
       </li>
    );
