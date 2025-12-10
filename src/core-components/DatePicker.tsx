@@ -7,7 +7,7 @@ import dayjs from '@/lib/dayjs';
 import 'dayjs/locale/pt-br';
 import { ptBR } from 'date-fns/locale';
 import CalendarBlank from '../assets/icons/calendarBlank.svg?react';
-import ChevronDown from '../assets/icons/CaretDown.svg?react';
+import ChevronDown from '../assets/icons/caretDown.svg?react';
 import { Icon } from '@/components/Icon';
 
 interface DatePickerProps {
