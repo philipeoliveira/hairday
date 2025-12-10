@@ -13,4 +13,5 @@ Primeiro desafio da formação React 2025 da Rocketseat, onde a proposta é a co
 -  Shadcn
 -  CVA Style
 -  Date-fns
+-  Dayjs
 -  UseLocalStorage
